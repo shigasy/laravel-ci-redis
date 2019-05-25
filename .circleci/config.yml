@@ -38,7 +38,7 @@ jobs: # a collection of steps
     #    paths:
     #    - node_modules
 
-    - run: php artisan migrate --env=testing --database=pgsql
+    - run: php artisan migrate --env=testing
     - run: ./vendor/bin/phpunit
     #- run: ./vendor/bin/codecept build
     #- run: ./vendor/bin/codecept run
