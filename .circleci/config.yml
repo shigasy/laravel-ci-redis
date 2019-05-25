@@ -37,7 +37,7 @@ jobs: # a collection of steps
     #    paths:
     #    - node_modules
 
-    - run: php artisan migrate --env=testing --database=postgres_test --force
+    - run: php artisan migrate --env=testing --database=pgsql --force
     - run: ./vendor/bin/codecept build
     - run: ./vendor/bin/codecept run
     # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
