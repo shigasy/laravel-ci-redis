@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/day', 'TopController@getRankingDay');
+Route::get('/week', 'TopController@getRankingWeek');
+Route::get('/{id}','LinkController@index');

@@ -1,4 +1,11 @@
 <?php
+if (getenv('REDIS_URL')) {
+    $url = parse_url(getenv('REDIS_URL'));
+
+    putenv('REDIS_HOST='.$url['host']);
+    putenv('REDIS_PORT='.$url['port']);
+    putenv('REDIS_PASSWORD='.$url['pass']);
+}
 
 use Illuminate\Support\Str;
 
@@ -89,6 +96,20 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
+        ],
+
+        'redis' => [
+
+            'client' => 'predis',
+
+            'default' => [
+                'host' => env('REDIS_HOST', '127.0.0.1'),
+                'password' => env('REDIS_PASSWORD', null),
+                'port' => env('REDIS_PORT', 6379),
+                'database' => env('REDIS_DB', 0),
+                'read_write_timeout' => env('REDIS_READ_WRITE_TIMEOUT', 60),
+            ],
+
         ],
 
     ],
